@@ -3,10 +3,42 @@
     <head>
         <title>An interactive web page</title>
         <style>
+           @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Raleway:ital@1&display=swap');
+            
+            body{
+                font-family: 'Raleway', sans-serif;
+                font-size: 26px;
+                width: 80%;
+                height: 80%;
+                margin: auto;
+                text-align: center;
+            }
+
+            #color_box{
+                margin: auto;
+                margin-top: 10px;
+                border: solid 5px black;
+            }
+
+            #counter_button{
+                margin: 30px auto;
+                height: 30px;
+            }
+
+            #even_or_odd_button{
+                height: 30px;
+            }
+
+            #countspan{
+                font-size: 32px;
+                font-weight: bold;
+                color: blue;
+            }
+
             #color_box { width: 200px; height: 200px; }
             .gray { background: gray; }
             .blue { background: rgb(67, 111, 255); }
-            .pink { background: pink; }
+            .pink { background: deeppink; }
         </style>
     </head>
     <body>
@@ -15,6 +47,7 @@
         <h2>1. Color changer</h2>
         <button id="gray_button">Gray</button>
         <button id="blue_button">Blue</button>
+        <button id="rosa_button">Rosa</button>
         <div id="color_box" class="gray"></div>        
         <script>
             const color_box = document.getElementById("color_box");
@@ -29,6 +62,11 @@
                 color_box.className = "blue";
             };
 
+            const rosa_button = document.getElementById("rosa_button");
+            rosa_button.onclick = function () {
+                color_box.className = "pink";
+            };
+
             /* TODO 1
              *
              *  Adicionar um botão e um event handler 
@@ -39,14 +77,16 @@
         <hr>
 
         <h2>2. Counter</h2>
-        <button id="counter_button">This fabulous button</button>
+        <button id="counter_button">Clik para contar</button>
         has been clicked <span id="countspan">0</span> times.
         <script>
             let count = 0;
-            const countspan = document.getElementById("countspan");
-            
+            const countspan = document.getElementById("countspan");            
             const counter_button = document.getElementById("counter_button");
             counter_button.onclick = function() {
+                const x = document.getElementById("countspan")
+                count++
+                x.innerText=count
                 /* TODO 2
                  *
                  *  A função incrementa 1 em um contador "count", 
@@ -59,11 +99,19 @@
         <hr>
 
         <h2>3. Even or Odd?</h2>
-        <button id="even_or_odd_button">Is the count even or odd?</button>
+        <button id="even_or_odd_button">Par ou impar?</button>
         <script>
             const even_or_odd_button = document.getElementById("even_or_odd_button");
             even_or_odd_button.onclick = function() {
+                
+                if (count % 2 == 0) {
+                alert("é par")
+            } else {
+                alert("é impar")
+            }
+                
                 /* TODO 3
+                
                  *
                  * A função mostra um "alert dialog" mostrando se o contador 
                  * (da segunda tarefa (TODO 2)) é par ou impar.
